@@ -66,7 +66,7 @@ export default {
     const treesSaved = ref(0);
 
     const fetchCategories = () => {
-      axios.get('http://localhost:3000/api/categories')
+      axios.get('http://localhost:3001/api/categories')
         .then(response => {
           categories.value = response.data;
         })
@@ -78,7 +78,7 @@ export default {
     const fetchItems = (index) => {
       const category_id = ingredients.value[index].category;
       if (category_id) {
-        axios.get(`http://localhost:3000/api/items/${category_id}`)
+        axios.get(`http://localhost:3001/api/items/${category_id}`)
           .then(response => {
             ingredients.value[index].items = response.data;
             ingredients.value[index].name = ''; // 重置选择的食材名称
