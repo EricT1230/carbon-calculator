@@ -1,10 +1,12 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(helmet());
 
 // 設置MySQL資料庫連接
 const db = mysql.createConnection({
@@ -32,8 +34,11 @@ app.get('/api/categories', (req, res) => {
 app.get('/api/items/:category_id', (req, res) => {
     const sql = 'SELECT * FROM Item WHERE category_id = ?';
     db.query(sql, [req.params.category_id], (err, result) => {
-        if (err) throw err;
-        res.json(result);
+    if (err){
+        console.error('SQL Error:', err);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+    res.json(result);
     });
 });
 
