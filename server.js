@@ -30,6 +30,12 @@ app.get('/api/categories', (req, res) => {
     });
 });
 
+//每五秒log回傳OK
+setInterval(()=>{
+    console.log('ok')
+},1000 * 60 * 60 *7)
+
+
 // API路由來根據Category ID獲取對應的Items
 app.get('/api/items/:category_id', (req, res) => {
     const sql = 'SELECT * FROM Item WHERE category_id = ?';
