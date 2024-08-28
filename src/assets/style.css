@@ -36,21 +36,23 @@ header p {
 main {
     width: 80%;
     margin: 2em auto;
-    padding: 1em;
+    padding: 0.6em;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Ingredient selection section */
+/* Ingredient selection section 
 .ingredient-selection {
-    margin-bottom: 2em;
+ 
 }
+*/
 
 .ingredient-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1em;
+    margin-top: 10px;
+   
 }
 
 .ingredient-category,
