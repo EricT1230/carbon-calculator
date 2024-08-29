@@ -30,10 +30,10 @@ app.get('/api/categories', (req, res) => {
     });
 });
 
-//每五秒log回傳OK
+//每五小時做一次查詢
 setInterval(()=>{
-    console.log('ok')
-},1000 * 60 * 60 *7)
+    db.query('select 1 form;' , (err, result) => {console.log('重新連線')})
+},1000 * 60 * 60 *5)
 
 
 // API路由來根據Category ID獲取對應的Items
