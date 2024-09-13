@@ -1,11 +1,38 @@
 <template>
   <div id="app">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- Header -->
     <header>
-      <h1>餐點碳排放計算機</h1>
-      <p>計算您餐點的碳排放量，助力環保</p>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-color:  #6abf69;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">台東減碳x慢食遊</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+           
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="App.vue">碳排計算機</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link "   href="slowfood_info.html">慢食趣</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link "  href="carbon_info.html">減碳資訊及平台介紹</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="restaurent_info.html">餐廳介紹</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     </header>
-
+    <div class="top">
+    <h1>碳排計算機</h1>
+    <p>計算您餐點的碳排放量，助力環保</p>
+  </div>
     <!-- Main Content -->
     <main>
       <!-- 食材選擇區 食材類 -->
@@ -94,6 +121,11 @@
         <div class="comparison">
           <p><span id="trees-saved">{{ treesSaved }}</span> 棵樹木一個月的吸收量</p>
         </div>
+        <!-- 圖表 -->
+        
+        <div class="emissionChart">
+          <canvas id="emissionChart"></canvas>
+        </div> 
       </section>
     </main>
 
@@ -107,6 +139,9 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
+import { Chart, registerables } from 'chart.js';
+
+Chart.register(...registerables);
 
 export default {
   setup() {
@@ -123,6 +158,7 @@ export default {
     const totalEmission = ref(0.00);
     const carTravel = ref(0);
     const treesSaved = ref(0);
+    const chartInstance = ref(null);// Chart.js
 
     const fetchCategories = () => {
       axios.get('http://localhost:3001/api/categories')
@@ -149,7 +185,7 @@ export default {
         axios.get(`http://localhost:3001/api/items/${category_id}`)
           .then(response => {
             ingredientsArray.value[index].items = response.data;
-            ingredientsArray.value[index].name = ''; // 重置选择的食材名称
+            ingredientsArray.value[index].name = ''; // 重製食材
           })
           .catch(error => {
             console.error('There was an error fetching items!', error);
@@ -169,7 +205,7 @@ export default {
 
       const ingredient = ingredientsArray.value[index];
       if (ingredient.weight < 0) {
-        alert('重量不可为负值！');
+        alert('重量不可為負值！');
         ingredient.weight = 0;
       }
       const selectedItem = ingredient.items.find(item => item.item_id === ingredient.name);
@@ -194,10 +230,55 @@ export default {
     };
 
     const calculateEmissions = () => {
-      totalEmission.value = [...ingredientsForFood.value, ...ingredientsForEnergy.value, ...ingredientsForTransport.value]
-        .reduce((total, ingredient) => total + ingredient.carbon_emission, 0);
-      carTravel.value = totalEmission.value * 5; // 假设1kg CO2等于行驶5公里
-      treesSaved.value = (totalEmission.value / 0.625).toFixed(1); // 假设1kg CO2等于10棵树一个月的吸收量
+      const foodEmission = ingredientsForFood.value.reduce((total, ingredient) => total + ingredient.carbon_emission, 0);
+      const energyEmission = ingredientsForEnergy.value.reduce((total, ingredient) => total + ingredient.carbon_emission, 0);
+      const transportEmission = ingredientsForTransport.value.reduce((total, ingredient) => total + ingredient.carbon_emission, 0);
+
+      totalEmission.value = foodEmission + energyEmission + transportEmission;
+      carTravel.value = totalEmission.value * 5; // 假設1kg CO2等於行駛5公里
+      treesSaved.value = (totalEmission.value / 0.625).toFixed(1); // 假設1kg CO2等於10棵樹一個月的吸收量
+
+      updateChart(foodEmission, energyEmission, transportEmission); // 更新圖表
+    };
+
+    const updateChart = (foodEmission, energyEmission, transportEmission) => {
+      const ctx = document.getElementById('emissionChart').getContext('2d');
+
+      if (chartInstance.value) {
+        chartInstance.value.destroy(); // 如果圖表存在，就刪除
+      }
+
+      chartInstance.value = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['食材類', '能源類', '運輸類'],
+          datasets: [{
+            label: '碳排放比例',
+            data: [
+              foodEmission / totalEmission.value * 100,
+              energyEmission / totalEmission.value * 100,
+              transportEmission / totalEmission.value * 100,
+            ],
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.label + ': ' + context.raw.toFixed(2) + '%';
+                }
+              }
+            }
+          }
+        }
+      });
     };
 
     const resetCalculator = () => {
@@ -207,9 +288,13 @@ export default {
       totalEmission.value = 0.00;
       carTravel.value = 0;
       treesSaved.value = 0;
+
+      if (chartInstance.value) {
+        chartInstance.value.destroy(); // 重置時刪除图表
+      }
     };
 
-    fetchCategories(); // 初始化时获取分类数据
+    fetchCategories(); // 初始化時分類數據
 
     return {
       categories,
@@ -225,8 +310,14 @@ export default {
       calculateEmissions,
       resetCalculator
     };
+  },
+  mounted() {
+    const ctx = document.getElementById('emissionChart');
+    if (ctx) {
+      ctx.height = 400; // 圖表高度
+    }
   }
-}
+};
 </script>
 
 

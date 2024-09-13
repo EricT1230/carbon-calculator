@@ -16,10 +16,6 @@ const db = mysql.createConnection({
     database: 'carbon'
 });
 
-db.connect(err => {
-    if (err) throw err;
-    console.log('MySQL Connected...');
-});
 
 // API路由來獲取所有Category
 app.get('/api/categories', (req, res) => {

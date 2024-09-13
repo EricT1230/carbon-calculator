@@ -11,32 +11,42 @@ body {
     background-color: #f0f4f7;
     color: #333;
     line-height: 1.6;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+header{
+    background-color: #6abf69;
+    padding: 1.5em 0;
+   
 }
 
-/* Header styles */
-header {
+/* Top styles */
+.top {
     background-color: #6abf69;
     color: #fff;
     text-align: center;
     padding: 1.5em 0;
-    border-radius: 8px;
+    border-radius:0px 0px 8px 8px;
 }
 
-header h1 {
+.top h1 {
     margin-bottom: 0.5em;
     font-size: 2.5em;
     letter-spacing: 2px;
 }
 
-header p {
+.top p {
     font-size: 1.2em;
 }
 
 /* Main content styles */
 main {
+    flex:1;
     width: 80%;
     margin: 2em auto;
-    padding: 0.6em;
+    padding: 1em;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -44,15 +54,13 @@ main {
 
 /* Ingredient selection section 
 .ingredient-selection {
- 
-}
-*/
+   /* margin-bottom: 2em;
+}*/
 
 .ingredient-row {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
-   
+   /* margin-bottom: 1em;*/
 }
 
 .ingredient-category,
@@ -62,6 +70,7 @@ main {
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-top: 5px;
 }
 
 .ingredient-category:focus,
@@ -79,6 +88,7 @@ main {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 5px;
 }
 
 .add-row:hover {
@@ -158,6 +168,16 @@ footer {
     padding: 1em 0;
     background-color: #333;
     color: #fff;
-    margin-top: 2em;
-    border-radius: 8px;
+   
+    flex-shrink: 0;
 }
+
+.emissionChart {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
