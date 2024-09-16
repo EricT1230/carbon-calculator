@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
     <!-- Header -->
     <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-color:  #6abf69;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">台東減碳x慢食遊</a>
+        <a class="navbar-brand" href="./home.html">台東減碳x慢食遊</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,16 +13,16 @@
           <ul class="navbar-nav">
            
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="App.vue">碳排計算機</a>
+              <a class="nav-link active" aria-current="page" href="index.html">碳排計算機</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link "   href="slowfood_info.html">慢食趣</a>
+              <a class="nav-link "   href="./slowfood_info.html">慢食趣</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link "  href="carbon_info.html">減碳資訊及平台介紹</a>
+              <a class="nav-link "  href="./carbon_info.html">減碳資訊及平台介紹</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="restaurent_info.html">餐廳介紹</a>
+                <a class="nav-link " href="./restaurent_info.html">餐廳介紹</a>
               </li>
           </ul>
         </div>
@@ -114,6 +114,7 @@
         <button class="calculate-button" @click="calculateEmissions">計算碳排放</button>
         
       </div>
+
       <!-- 結果顯示區 -->
       <section class="results">
         <h2>總碳排放量</h2>
@@ -121,12 +122,104 @@
         <div class="comparison">
           <p><span id="trees-saved">{{ treesSaved }}</span> 棵樹木一個月的吸收量</p>
         </div>
+
         <!-- 圖表 -->
-        
-        <div class="emissionChart">
-          <canvas id="emissionChart"></canvas>
-        </div> 
+        <div class="chart-container-wrapper">
+          <div class="Chart-container">
+            <canvas v-if="totalEmission >0" id="emissionChart"></canvas>
+
+            <!-- 詳細資料 -->
+            <button v-if="totalEmission >0" type="button" class="btn btn-dark details-btn" data-bs-toggle="modal" data-bs-target="#detailsModal">
+              詳細資料
+            </button>
+          </div> 
+        </div>
       </section>
+
+      <!-- 模態窗口 -->
+      <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="detailsModalLabel">計算詳細資料</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- 單個表格包含所有數據 -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">名稱</th>
+                    <th scope="col">重量/距離</th>
+                    <th scope="col">碳排放量(kg CO₂e)</th>
+                    <th scope="col">資料來源</th>
+                    <th scope="col">資料分級 <i class="bi bi-info-circle" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#infoModal"></i></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 食材類 -->
+                  <tr>
+                    <td colspan="5"><strong>食材類</strong></td>
+                  </tr>
+                  <tr v-for="item in foodData" :key="item.item_name">
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ item.input_value }}</td>
+                    <td>{{ item.carbon_emission.toFixed(4) }}</td>
+                    <td>{{ item.source }}</td>
+                    <td>{{ item.level }}</td>
+                  </tr>
+                  
+                  <!-- 能源類 -->
+                  <tr>
+                    <td colspan="5"><strong>能源類</strong></td>
+                  </tr>
+                  <tr v-for="item in energyData" :key="item.item_name">
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ item.input_value }}</td>
+                    <td>{{ item.carbon_emission.toFixed(4) }}</td>
+                    <td>{{ item.source }}</td>
+                    <td>{{ item.level }}</td>
+                  </tr>
+
+                  <!-- 運輸類 -->
+                  <tr>
+                    <td colspan="5"><strong>運輸類</strong></td>
+                  </tr>
+                  <tr v-for="item in transportData" :key="item.item_name">
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ item.input_value }}</td>
+                    <td>{{ item.carbon_emission.toFixed(4) }}</td>
+                    <td>{{ item.source }}</td>
+                    <td>{{ item.level }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 資料分級模態窗口 -->
+      <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="infoModalLabel">資料來源分級說明</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img src="@/assets/img/data_source.jpg" alt="資料來源分級說明" class="img-fluid">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- Footer -->
@@ -137,23 +230,31 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, nextTick, computed } from 'vue';
 import axios from 'axios';
 import { Chart, registerables } from 'chart.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 Chart.register(...registerables);
 
 export default {
   setup() {
     const categories = ref([]);
+    const energyCategoryId = '7';  
+    const transportCategoryId = '1';  
+
     const ingredientsForFood = ref([
       { category: '', name: '', weight: '', items: [], carbon_emission: 0 }
     ]);
     const ingredientsForEnergy = ref([
-      { category: '', name: '', weight: '', items: [], carbon_emission: 0 }
+      { category: energyCategoryId , name: '', weight: '', items: [], carbon_emission: 0 }
     ]);
     const ingredientsForTransport = ref([
-      { category: '', name: '', weight: '', items: [], carbon_emission: 0 }
+      { category: transportCategoryId , name: '', weight: '', items: [], carbon_emission: 0 }
     ]);
     const totalEmission = ref(0.00);
     const carTravel = ref(0);
@@ -164,11 +265,27 @@ export default {
       axios.get('http://localhost:3001/api/categories')
         .then(response => {
           categories.value = response.data;
+
+          // 設置能源類的預選項
+          const energyCategory = categories.value.find(cat => cat.category_name === '烹煮能源類');
+          if (energyCategory) {
+            ingredientsForEnergy.value[0].category = energyCategory.category_id;
+            fetchItems(0, 'energy'); // 請求該類別的項目
+          }
+
+          // 設置運輸類的預選項
+          const transportCategory = categories.value.find(cat => cat.category_name === '運輸類');
+          if (transportCategory) {
+            ingredientsForTransport.value[0].category = transportCategory.category_id;
+            fetchItems(0, 'transport'); // 請求該類別的項目
+          }
         })
         .catch(error => {
           console.error('There was an error fetching categories!', error);
         });
     };
+
+    
 
     const fetchItems = (index, type) => {
       let ingredientsArray;
@@ -192,6 +309,8 @@ export default {
           });
       }
     };
+
+    fetchCategories(); // 在頁面加載時調用
 
     const updateCarbonEmission = (index, type) => {
       let ingredientsArray;
@@ -219,15 +338,26 @@ export default {
     };
 
     const addRow = (type) => {
-      const newIngredient = { category: '', name: '', weight: '', items: [], carbon_emission: 0 };
+      let newIngredient=null;
       if (type === 'food') {
+        newIngredient = { category: '', name: '', weight: '', items: [], carbon_emission: 0 };
         ingredientsForFood.value.push(newIngredient);
+        fetchItems(ingredientsForFood.value.length - 1, 'food');
       } else if (type === 'energy') {
+        newIngredient = { category: '7', name: '', weight: '', items: [], carbon_emission: 0 };
         ingredientsForEnergy.value.push(newIngredient);
+        fetchItems(ingredientsForEnergy.value.length - 1, 'energy');
       } else if (type === 'transport') {
+        newIngredient = { category: '1', name: '', weight: '', items: [], carbon_emission: 0 }; 
         ingredientsForTransport.value.push(newIngredient);
+        fetchItems(ingredientsForTransport.value.length - 1, 'transport');
       }
     };
+
+    const detailedData = ref([]);
+    const foodData = computed(() => detailedData.value.filter(item => item.category === '食材類'));
+    const energyData = computed(() => detailedData.value.filter(item => item.category === '能源類'));
+    const transportData = computed(() => detailedData.value.filter(item => item.category === '運輸類'));
 
     const calculateEmissions = () => {
       const foodEmission = ingredientsForFood.value.reduce((total, ingredient) => total + ingredient.carbon_emission, 0);
@@ -238,11 +368,48 @@ export default {
       carTravel.value = totalEmission.value * 5; // 假設1kg CO2等於行駛5公里
       treesSaved.value = (totalEmission.value / 0.625).toFixed(1); // 假設1kg CO2等於10棵樹一個月的吸收量
 
-      updateChart(foodEmission, energyEmission, transportEmission); // 更新圖表
-    };
+    detailedData.value = [
+      ...ingredientsForFood.value.map(ingredient => ({
+        category: '食材類',
+        item_name: ingredient.items.find(item => item.item_id === ingredient.name)?.item_name || '',
+        input_value: ingredient.weight,
+        carbon_emission: ingredient.carbon_emission,
+        source: ingredient.items.find(item => item.item_id === ingredient.name)?.source || '未知來源',
+        level: ingredient.items.find(item => item.item_id === ingredient.name)?.level || '未知'
+      })),
+      ...ingredientsForEnergy.value.map(ingredient => ({
+        category: '能源類',
+        item_name: ingredient.items.find(item => item.item_id === ingredient.name)?.item_name || '',
+        input_value: ingredient.weight,
+        carbon_emission: ingredient.carbon_emission,
+        source: ingredient.items.find(item => item.item_id === ingredient.name)?.source || '未知來源',
+        level: ingredient.items.find(item => item.item_id === ingredient.name)?.level || '未知'
+      })),
+      ...ingredientsForTransport.value.map(ingredient => ({
+        category: '運輸類',
+        item_name: ingredient.items.find(item => item.item_id === ingredient.name)?.item_name || '',
+        input_value: ingredient.weight,
+        carbon_emission: ingredient.carbon_emission,
+        source: ingredient.items.find(item => item.item_id === ingredient.name)?.source || '未知來源',
+        level: ingredient.items.find(item => item.item_id === ingredient.name)?.level || '未知'
+      }))
+    ];
+
+      // 只有當有碳排放量時才更新圖表並顯示
+      if (totalEmission.value > 0) {
+        nextTick(() => {
+        updateChart(foodEmission, energyEmission, transportEmission);
+      });
+    }
+  };
 
     const updateChart = (foodEmission, energyEmission, transportEmission) => {
-      const ctx = document.getElementById('emissionChart').getContext('2d');
+      const ctx = document.getElementById('emissionChart')?.getContext('2d');
+
+      if (!ctx) {
+        console.error("Canvas element not found");
+        return;
+      }
 
       if (chartInstance.value) {
         chartInstance.value.destroy(); // 如果圖表存在，就刪除
@@ -267,7 +434,7 @@ export default {
           responsive: true,
           plugins: {
             legend: {
-              position: 'top',
+              position: 'bottom',
             },
             tooltip: {
               callbacks: {
@@ -279,18 +446,20 @@ export default {
           }
         }
       });
-    };
+    };  
 
     const resetCalculator = () => {
       ingredientsForFood.value = [{ category: '', name: '', weight: '', items: [], carbon_emission: 0 }];
-      ingredientsForEnergy.value = [{ category: '', name: '', weight: '', items: [], carbon_emission: 0 }];
-      ingredientsForTransport.value = [{ category: '', name: '', weight: '', items: [], carbon_emission: 0 }];
+      ingredientsForEnergy.value = [{ category: '7', name: '', weight: '', items: [], carbon_emission: 0 }];
+      fetchItems(0, 'energy');
+      ingredientsForTransport.value = [{ category: '1', name: '', weight: '', items: [], carbon_emission: 0 }];
+      fetchItems(0, 'transport');
       totalEmission.value = 0.00;
       carTravel.value = 0;
       treesSaved.value = 0;
 
       if (chartInstance.value) {
-        chartInstance.value.destroy(); // 重置時刪除图表
+        chartInstance.value.destroy(); // 重置時刪除圖表
       }
     };
 
@@ -308,7 +477,11 @@ export default {
       updateCarbonEmission,
       addRow,
       calculateEmissions,
-      resetCalculator
+      resetCalculator,
+      detailedData,
+      foodData,
+      energyData,
+      transportData
     };
   },
   mounted() {
@@ -316,6 +489,7 @@ export default {
     if (ctx) {
       ctx.height = 400; // 圖表高度
     }
+  
   }
 };
 </script>
