@@ -11,15 +11,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-           
+            <li class="nav-item">
+              <a class="nav-link "  href="./carbon_info.html">減碳資訊及平台介紹</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="index.html">碳排計算機</a>
             </li>
             <li class="nav-item">
               <a class="nav-link "   href="./slowfood_info.html">慢食趣</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link "  href="./carbon_info.html">減碳資訊及平台介紹</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="./restaurent_info.html">餐廳介紹</a>
@@ -126,13 +125,15 @@
         <!-- 圖表 -->
         <div class="chart-container-wrapper">
           <div class="Chart-container">
-            <canvas v-if="totalEmission >0" id="emissionChart"></canvas>
+            <canvas v-if="totalEmission > 0" id="emissionChart"></canvas>
+          </div>
+        </div>
 
-            <!-- 詳細資料 -->
-            <button v-if="totalEmission >0" type="button" class="btn btn-dark details-btn" data-bs-toggle="modal" data-bs-target="#detailsModal">
-              詳細資料
-            </button>
-          </div> 
+        <!-- 詳細資料 -->
+        <div>
+          <button v-if="totalEmission > 0" type="button" class="btn btn-dark details-btn" data-bs-toggle="modal" data-bs-target="#detailsModal">
+            詳細資料
+          </button>
         </div>
       </section>
 
@@ -223,9 +224,45 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-      <p>© 2024 餐點碳排放計算機 | 聯絡我們：(089)326141~326146</p>
-    </footer>
+    <footer class="custom-footer">
+  <div class="container">
+    <div class="row">
+      <!-- Mobile view: stacked layout with centered text and small logo in the bottom-right corner -->
+      <div class="d-md-none text-center position-relative">
+        <div class="mb-3">
+          <img src="@/assets/img/logo_g.png" alt="First Logo" class="footer-logo">
+        </div>
+        <div class="mb-3 footer-text-container"> <!-- Added padding-bottom to ensure space for the logo -->
+          <p class="footer-text text-center">
+            &copy; 113數位發展部公民科技試驗場域開發案 <br>
+            Developed by 減碳慢食小餐館
+          </p>
+        </div>
+        <div class="small-logo">
+          <img src="@/assets/img/logo_m.png" alt="MODA Logo" class="footer-logo">
+        </div>
+      </div>
+
+      <!-- Desktop view: side-by-side layout -->
+      <div class="d-none d-md-flex col-md-6 text-md-start text-center logo-container">
+        <div>
+          <img src="@/assets/img/logo_g.png" alt="First Logo" class="footer-logo">
+        </div>
+        <div>
+          <p class="footer-text">
+            &copy; 113數位發展部公民科技試驗場域開發案 <br>
+            Developed by 減碳慢食小餐館
+          </p>
+        </div>
+      </div>
+      <div class="d-none d-md-flex col-md-6 text-md-end text-center logo-container">
+        <div style="margin-left: auto;">
+          <img src="@/assets/img/logo_m.png" alt="MODA Logo" class="footer-logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
   </div>
 </template>
 

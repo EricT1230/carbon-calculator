@@ -190,13 +190,67 @@ footer {
   }
 
   .details-btn {
-    position: absolute;
-    right: 10px;  
-    bottom: 10px; 
+    display: block;
+    margin-left: auto;
   }
 
   .modal-lg {
     max-width: 90%;
   }
   
-  
+  /* Footer styles */
+.custom-footer {
+    background-color: #333; /* Dark background color */
+    color: white; /* White text */
+    padding: 20px 0;
+}
+
+.footer-text {
+    text-align: left;
+    font-size: 14px;
+    margin: 0;
+}
+
+.footer-text a {
+    color: #00a6ac; /* Link color */
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+.footer-logo {
+    max-height: 50px; /* Adjust the height as needed */
+    margin-right: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo-container div {
+    margin-right: 10px; /* Space between the two logos */
+}
+
+/* Mobile-specific styles */
+.position-relative {
+    position: relative;
+}
+
+.footer-text-container {
+    padding-bottom: 50px; /* Ensure space for the MODA logo */
+}
+
+.small-logo {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.small-logo img {
+    max-height: 20px; /* Smaller logo for mobile */
+}
+
