@@ -59,7 +59,7 @@
     </main>
 
     <main>
-      <!-- 食材選擇區 能源類 -->
+      <!-- 食材選擇區 能源類 --><!--測試用能源資料 預計於拍攝後改善新版能源'資料-->
       <section class="ingredient-selection">
         <h2>能源類</h2>
         <div class="ingredient-row" v-for="(ingredient, index) in ingredientsForEnergy" :key="index">

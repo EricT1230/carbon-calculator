@@ -73,18 +73,62 @@
                         <p class="mb-0">與在地生產者合作，主廚Tanya因台東缺乏泰式餐廳，前往泰國學習，
                             回國後使用台東有機農場的香料，讓人們在品嚐正宗泰國料理同時也能享受慢食。
 
-                        </p><br>
+                          <br>
                           <h6><b>特色餐點</b></h6>
                           <ul class="custom-list">
                             <li>
                                 很泰打拋豬
-                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 29.2 kg CO2e <br> 比一般減少了約 20%">
-                                  查看碳排
+                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="台東在地香茅<br> 外國食材、在地種植">
+                                  低碳特色
                                 </button>
+
+                                <!-- 詳細資料 -->
+                                  <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#detailsModal">
+                                    查看碳排
+                                  </button>
+                                
                             </li>
-                           
+                            
+                            <!-- 模態窗口結構 -->
+                            <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="detailsModalLabel">很泰打拋豬</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <!-- 顯示詳細資料的表格 -->
+                                    <table class="table table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>餐點</th>
+                                          <th>食材</th>
+                                          <th>距離碳排</th>
+                                          <th>能源</th>
+                                          <th>食材碳排</th>
+                                          <th>總碳排</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>很泰打拋豬</td>
+                                          <td>豬肉130g<br>台東在地香茅</td>
+                                          <td>2.2484</td>
+                                          <td>24.31</td>
+                                          <td>4.823</td>
+                                          <td>31.3814</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </ul> 
-                          
                         </p> 
                     </div>
                 </div>
@@ -145,27 +189,166 @@
 
                       <p class="mb-0">艾蘭哥爾的意思即為美麗遙遠的地方，是過去葡萄牙人對台東的稱呼。咖啡館坐落在台東美術館內，台東咖啡地圖高高掛在牆上，介紹台東各區的咖啡特色與風味。艾蘭哥爾致力於台東產業咖啡的推廣始於1974年，至今已有51年歷史。推廣生態農法不使用有機肥料與打造台東咖啡文化是老闆弘典的理想，就如艾蘭哥爾的菜單看似簡單，但內涵滿滿。</p><br>
 
-
+                        <br>
                         <h6><b>特色餐點</b></h6>
                         <ul class="custom-list">
                             <li>
                                 黑咖啡
-                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 8.3 kg CO2e <br> 比一般減少了約 50%">
+                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="咖啡豆<br> 自家栽培、零碳環保 <br> 友善環境">
+                                  低碳特色
+                                </button>
+
+                                <!-- 詳細資料 -->
+                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#Coffee">
                                   查看碳排
                                 </button>
+
                             </li>
+
+                            <!-- 模態窗口結構 -->
+                            <div class="modal fade" id="Coffee" tabindex="-1" aria-labelledby="CoffeeLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="CoffeeLabel">黑咖啡</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <!-- 顯示詳細資料的表格 -->
+                                    <table class="table table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>餐點</th>
+                                          <th>食材</th>
+                                          <th>距離碳排</th>
+                                          <th>能源</th>
+                                          <th>食材碳排</th>
+                                          <th>總碳排</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>黑咖啡</td>
+                                          <td>咖啡豆 <br>水</td>
+                                          <td>0.4088</td>
+                                          <td>4.52605</td>
+                                          <td>0</td>
+                                          <td>4.93485</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                             <li>
                             花草茶
-                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 8.2 kg CO2e <br> 比一般減少了約 10%">
+                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="花草 <br> 自家栽培、零碳環保 <br> 經濟友善">
+                                  低碳特色
+                                </button>
+
+                                <!-- 詳細資料 -->
+                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#FlowerTea">
                                   查看碳排
                                 </button>
                             </li>
+
+                            <!-- 模態窗口結構 -->
+                            <div class="modal fade" id="FlowerTea" tabindex="-1" aria-labelledby="FlowerTeaLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="FlowerTeaLabel">花草茶</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <!-- 顯示詳細資料的表格 -->
+                                    <table class="table table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>餐點</th>
+                                          <th>食材</th>
+                                          <th>距離碳排</th>
+                                          <th>能源</th>
+                                          <th>食材碳排</th>
+                                          <th>總碳排</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>花草茶</td>
+                                          <td>花草 <br>水</td>
+                                          <td>0.4088</td>
+                                          <td>4.42</td>
+                                          <td>0</td>
+                                          <td>4.8288</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                             <li>
-                                洛神花汁
-                                    <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 8.2 kg CO2e <br> 比一般減少了約 10%">
-                                      查看碳排
-                                    </button>
-                                </li>
+                            洛神花汁
+                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="洛神花 <br>自家栽培、零碳環保">
+                                  低碳特色
+                                </button>
+
+                                <!-- 詳細資料 -->
+                                <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#FlowerJuice">
+                                  查看碳排
+                                </button>
+                            </li>
+
+                            <!-- 模態窗口結構 -->
+                            <div class="modal fade" id="FlowerJuice" tabindex="-1" aria-labelledby="FlowerJuiceLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="FlowerJuiceLabel">洛神花汁</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <!-- 顯示詳細資料的表格 -->
+                                    <table class="table table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>餐點</th>
+                                          <th>食材</th>
+                                          <th>距離碳排</th>
+                                          <th>能源</th>
+                                          <th>食材碳排</th>
+                                          <th>總碳排</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>洛神花汁</td>
+                                          <td>洛神花 <br>水</td>
+                                          <td>0.4088</td>
+                                          <td>4.45535</td>
+                                          <td>0</td>
+                                          <td>4.86415</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            
                           </ul> 
                   </div>
               </div>
@@ -232,16 +415,109 @@
                       <ul class="custom-list">
                           <li>
                             炙燒SIRAW飯糰
-                              <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 1.3 kg CO2e <br> 比一般減少了約 50%">
+                              <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="日出禾作有機米 <br> 有機種植、自家栽培">
+                                低碳特色
+                              </button>
+
+                              <!-- 詳細資料 -->
+                              <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#SIRAW">
                                 查看碳排
                               </button>
                           </li>
+
+                          <!-- 模態窗口結構 -->
+                          <div class="modal fade" id="SIRAW" tabindex="-1" aria-labelledby="SIRAWLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="SIRAWLabel">炙燒SIRAW飯糰</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <!-- 顯示詳細資料的表格 -->
+                                  <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>餐點</th>
+                                        <th>食材</th>
+                                        <th>距離碳排</th>
+                                        <th>能源</th>
+                                        <th>食材碳排</th>
+                                        <th>總碳排</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>炙燒SIRAW飯糰</td>
+                                        <td>日出禾作有機米 180g <br>關山溫體豬20g</td>
+                                        <td>0</td>
+                                        <td>0.0707</td>
+                                        <td>1.0282</td>
+                                        <td>1.0989</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          
                           <li>
                             電光咖啡
-                              <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 0.3 kg CO2e <br> 比一般減少了約 10%">
+                              <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="日出合作咖啡豆、濾掛包 <br> 淨零碳排、自家栽培 <br> 碳權購買認證">
+                                低碳特色
+                              </button>
+
+                              <!-- 詳細資料 -->
+                              <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#lightCofe">
                                 查看碳排
                               </button>
                           </li>
+
+                          <!-- 模態窗口結構 -->
+                          <div class="modal fade" id="lightCofe" tabindex="-1" aria-labelledby="lightCofeLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="lightCofeLabel">電光咖啡</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <!-- 顯示詳細資料的表格 -->
+                                  <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>餐點</th>
+                                        <th>食材</th>
+                                        <th>距離碳排</th>
+                                        <th>能源</th>
+                                        <th>食材碳排</th>
+                                        <th>總碳排</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>電光咖啡</td>
+                                        <td>咖啡豆<br>水</td>
+                                        <td>0</td>
+                                        <td>0.0707</td>
+                                        <td>0</td>
+                                        <td>0.0707</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
                          
                         </ul> 
                 </div>
@@ -303,22 +579,159 @@
                   <ul class="custom-list">
                     <li>
                         野菜紫蘇飯糰
-                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 8.9 kg CO2e <br> 比一般減少了約 50%">
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="關山米<br> 關山紫蘇<br> 本地食材">
+                          低碳特色
+                        </button>
+
+                        <!-- 詳細資料 -->
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#VegRiceball">
                           查看碳排
                         </button>
                     </li>
+
+                    <!-- 模態窗口結構 -->
+                    <div class="modal fade" id="VegRiceball" tabindex="-1" aria-labelledby="VegRiceballLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="VegRiceballLabel">野菜紫蘇飯糰</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- 顯示詳細資料的表格 -->
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>餐點</th>
+                                  <th>食材</th>
+                                  <th>距離碳排</th>
+                                  <th>能源</th>
+                                  <th>食材碳排</th>
+                                  <th>總碳排</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>野菜紫蘇飯糰</td>
+                                  <td>野菜 5g<br>白米60g</td>
+                                  <td>0</td>
+                                  <td>0.2121</td>
+                                  <td>0.0959</td>
+                                  <td>0.308</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     <li>
                         山胡椒松阪豬
-                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 4.3 kg CO2e <br> 比一般減少了約 70%">
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="關山特色山胡椒 <br> 在地種植">
+                          低碳特色
+                        </button>
+
+                        <!-- 詳細資料 -->
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#Pork">
                           查看碳排
                         </button>
                     </li>
+
+                    <!-- 模態窗口結構 -->
+                    <div class="modal fade" id="Pork" tabindex="-1" aria-labelledby="PorkLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="PorkLabel">山胡椒松阪豬</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- 顯示詳細資料的表格 -->
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>餐點</th>
+                                  <th>食材</th>
+                                  <th>距離碳排</th>
+                                  <th>能源</th>
+                                  <th>食材碳排</th>
+                                  <th>總碳排</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>山胡椒松阪豬</td>
+                                  <td>山胡椒 1g<br>豬肉110g</td>
+                                  <td>0</td>
+                                  <td>0.03535</td>
+                                  <td>4.081</td>
+                                  <td>4.11635</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     <li>
                         紅烏龍鮮奶茶
-                            <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 5.5 kg CO2e <br> 比一般減少了約 30%">
-                              查看碳排
-                            </button>
-                        </li>
+                          <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="鹿野茶葉 <br> 初鹿牧場鮮奶 <br> 友善環境種植">
+                            低碳特色
+                          </button>
+
+                        <!-- 詳細資料 -->
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#WoolonMilk">
+                          查看碳排
+                        </button>
+                    </li>
+
+                    <!-- 模態窗口結構 -->
+                    <div class="modal fade" id="WoolonMilk" tabindex="-1" aria-labelledby="WoolonMilkLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="WoolonMilkLabel">紅烏龍鮮奶茶</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- 顯示詳細資料的表格 -->
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>餐點</th>
+                                  <th>食材</th>
+                                  <th>距離碳排</th>
+                                  <th>能源</th>
+                                  <th>食材碳排</th>
+                                  <th>總碳排</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>紅烏龍鮮奶茶</td>
+                                  <td>紅烏龍茶3g<br>鮮奶150g</td>
+                                  <td>0</td>
+                                  <td>0.02121</td>
+                                  <td>0.3732</td>
+                                  <td>0.39441</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </ul>
                 </div>
           </div>
@@ -380,16 +793,107 @@
                   <ul class="custom-list">
                     <li>
                         彩色米麵疙瘩
-                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 3.2 kg CO2e <br> 比一般減少了約 20%">
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="關山米粉<br> 麵疙瘩<br> 低碳健康<br> 當地種植<br> 飽足感 ">
+                          低碳特色
+                        </button>
+
+                        <!-- 詳細資料 -->
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#ColorfulNoodle">
                           查看碳排
                         </button>
                     </li>
+
+                    <!-- 模態窗口結構 -->
+                    <div class="modal fade" id="ColorfulNoodle" tabindex="-1" aria-labelledby="ColorfulNoodleLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="ColorfulNoodleLabel">彩色米麵疙瘩</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- 顯示詳細資料的表格 -->
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>餐點</th>
+                                  <th>食材</th>
+                                  <th>距離碳排</th>
+                                  <th>能源</th>
+                                  <th>食材碳排</th>
+                                  <th>總碳排</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>彩色米麵疙瘩</td>
+                                  <td>野菜20g<br>肉燥50g<br>關山米粉250g</td>
+                                  <td>2.044</td>
+                                  <td>22.2414</td>
+                                  <td>1.98975</td>
+                                  <td>26.27515</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     <li>
                         馬告鹹豬肉
-                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="碳排放量: 6.8 kg CO2e <br> 比一般減少了約 50%">
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="馬告<br> 在地香料<br> 低碳環保">
+                          低碳特色
+                        </button>
+
+                        <!-- 詳細資料 -->
+                        <button type="button" class="btn btn-info btn-sm btn-custom-green" data-bs-toggle="modal" data-bs-target="#SaltPig">
                           查看碳排
                         </button>
                     </li>
+
+                    <!-- 模態窗口結構 -->
+                    <div class="modal fade" id="SaltPig" tabindex="-1" aria-labelledby="SaltPigLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="SaltPigLabel">馬告鹹豬肉</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- 顯示詳細資料的表格 -->
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>餐點</th>
+                                  <th>食材</th>
+                                  <th>距離碳排</th>
+                                  <th>能源</th>
+                                  <th>食材碳排</th>
+                                  <th>總碳排</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>馬告鹹豬肉</td>
+                                  <td>豬肉150g<br>馬告<br>鹽</td>
+                                  <td>2.044</td>
+                                  <td>22.2414</td>
+                                  <td>5.565</td>
+                                  <td>29.8504</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     
                   </ul>
                 </div>
