@@ -20,6 +20,16 @@ npm install axios
 ```
 npm install bootstrap-icons
 ```
+### SQL Script
+```
+/Ensure that you have MySQL server installed and running.
+/Import the SQL script into your database : mysql -u your-username -p your-database-name < /path/to/your/SQL/Dump20240916.sql
+/Enter your MySQL password and wait for the import to complete.
+```
+### Install mysql2
+```
+npm install mysql2
+```
 ### Node.js setup
 ```
 node server.js
@@ -32,12 +42,6 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-### SQL Script
-```
-/Ensure that you have MySQL server installed and running.
-/Import the SQL script into your database : mysql -u your-username -p your-database-name < /path/to/your/SQL/Dump20240916.sql
-/Enter your MySQL password and wait for the import to complete.
 ```
 ### Lints and fixes files
 ```
