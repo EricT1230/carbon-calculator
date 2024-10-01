@@ -12,7 +12,18 @@
 ```
 npm install
 ```
-
+### Install axios
+```
+npm install axios
+```
+### Install bootstrap-icons
+```
+npm install bootstrap-icons
+```
+### Node.js setup
+```
+node server.js
+```
 ### Compiles and hot-reloads for development
 ```
 npm run serve
@@ -36,9 +47,5 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Node.js setup
-```
-node server.js
-```
 ### Usage Instructions
 Open your browser and visit the local development server address. Enter the necessary categories and values to see a visual representation of carbon emissions.
